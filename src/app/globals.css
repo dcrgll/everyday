@@ -1,12 +1,23 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: var(--font-inter-sans);
-  --font-serif: var(--font-sf-rounded);
+  --color-*: initial;
+  --color-background: var(--background);
+  --color-background-muted: var(--background-muted);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-faint: var(--foreground-faint);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-border-active: var(--border-active);
+  --color-primary: var(--primary);
 
-  --color-background: rgb(var(--background));
-  --color-foreground: rgb(var(--foreground));
-  --color-primary: rgb(var(--primary));
+  --font-*: initial;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: var(--font-serif);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 }
 
 /*
@@ -19,17 +30,27 @@
 */
 @layer base {
   :root {
-    --background: 255 252 240;
-    --foreground: 16 15 15;
-    --primary: 32 94 166;
+    --background: #fffcf0;
+    --background-muted: #f2f0e5;
+    --foreground: #100f0f;
+    --foreground-muted: #6f6e69;
+    --foreground-faint: #b7b5ac;
+    --primary: #24837b;
+    --border: #e6e4d9;
+    --border-hover: #dad8ce;
+    --border-active: #cecdc3;
   }
-
   .dark {
-    --background: 16 15 15;
-    --foreground: 206 205 195;
-    --primary: 67 133 190;
+    --background: #100f0f;
+    --background-muted: #1c1b1a;
+    --foreground: #cecdc3;
+    --foreground-muted: #878580;
+    --foreground-faint: #575653;
+    --primary: #3aa99f;
+    --border: #282726;
+    --borer-hover: #343331;
+    --border-active: #403e3c;
   }
-
   body {
     color: rgb(var(--foreground));
     background: rgb(var(--background));
