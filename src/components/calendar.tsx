@@ -1,14 +1,11 @@
 'use client'
 
 import React from 'react'
-import { format, getDaysInYear, isBefore } from 'date-fns'
+import { getDaysInYear, isBefore } from 'date-fns'
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/tooltip'
+import { TooltipProvider } from '@/components/tooltip'
+
+import Day from './day'
 
 export default function YearDotGrid() {
   const currentYear = new Date().getFullYear()
@@ -23,20 +20,11 @@ export default function YearDotGrid() {
 
   return (
     <TooltipProvider>
-      <div className="mx-auto max-w-md p-4">
+      <div className="mx-auto w-full max-w-sm p-8">
         <h1 className="mb-4 text-2xl font-bold">{currentYear}</h1>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(20px,1fr))] gap-2">
+        <div className="grid w-full grid-cols-12 gap-2 gap-y-3 text-center">
           {days.map(({ date, isPast }, index) => (
-            <Tooltip key={index}>
-              <TooltipTrigger>
-                <div
-                  className={`h-2 w-2 rounded-full ${isPast ? 'bg-border-hover' : 'bg-foreground-muted'}`}
-                />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{format(date, 'MMMM d, yyyy')}</p>
-              </TooltipContent>
-            </Tooltip>
+            <Day key={index} date={date} isPast={isPast} index={index} />
           ))}
         </div>
       </div>
