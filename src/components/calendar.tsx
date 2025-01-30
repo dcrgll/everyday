@@ -6,7 +6,7 @@ import { getDaysInYear, isBefore } from 'date-fns'
 import { TooltipProvider } from '@/components/tooltip'
 
 import Day from './day'
-import Footer from './footer'
+import DaysLeft from './days_left'
 
 export default function YearDotGrid() {
   const [currentYear] = useState(new Date().getFullYear())
@@ -49,8 +49,7 @@ export default function YearDotGrid() {
             />
           ))}
         </div>
-
-        <Footer daysLeft={daysLeft} />
+        <DaysLeft daysLeft={daysLeft} />
       </div>
     </TooltipProvider>
   )
