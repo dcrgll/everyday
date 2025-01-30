@@ -11,6 +11,9 @@
   --color-border-hover: var(--border-hover);
   --color-border-active: var(--border-active);
   --color-primary: var(--primary);
+  --color-past: var(--past);
+  --color-present: var(--primary);
+  --color-future: var(--future);
 
   --font-*: initial;
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
@@ -35,10 +38,12 @@
     --foreground: #100f0f;
     --foreground-muted: #6f6e69;
     --foreground-faint: #b7b5ac;
-    --primary: #24837b;
+    --primary: #bc5215;
     --border: #e6e4d9;
     --border-hover: #dad8ce;
     --border-active: #cecdc3;
+    --past: #1c1b1a;
+    --future: #cecdc3;
   }
   .dark {
     --background: #100f0f;
@@ -46,13 +51,11 @@
     --foreground: #cecdc3;
     --foreground-muted: #878580;
     --foreground-faint: #575653;
-    --primary: #3aa99f;
+    --primary: #da702c;
     --border: #282726;
     --borer-hover: #343331;
     --border-active: #403e3c;
-  }
-  body {
-    color: rgb(var(--foreground));
-    background: rgb(var(--background));
+    --past: #f2f0e5;
+    --future: #403e3c;
   }
 }

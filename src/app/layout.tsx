@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${mono.className}`}>
+      <body
+        className={`${mono.className} bg-background text-foreground select-none`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
