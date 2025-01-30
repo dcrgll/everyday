@@ -10,17 +10,23 @@ export default function Day({
   date,
   isPast,
   isToday,
-  index
+  index,
+  year
 }: {
   date: Date
   isPast: boolean
   isToday: boolean
   index: number
+  year: number
 }) {
   const [isTooltipOpen, setIsTooltipOpen] = useState(false)
 
   return (
-    <Tooltip key={index} open={isTooltipOpen} onOpenChange={setIsTooltipOpen}>
+    <Tooltip
+      key={`${year}-${index}`}
+      open={isTooltipOpen}
+      onOpenChange={setIsTooltipOpen}
+    >
       <TooltipTrigger asChild>
         <motion.button
           className={cn(
@@ -30,8 +36,8 @@ export default function Day({
           )}
           onClick={() => setIsTooltipOpen(!isTooltipOpen)}
           initial={{
-            opacity: isToday ? 1 : 0,
-            scale: isToday ? 1 : 0.9,
+            opacity: 0,
+            scale: 0.9,
             backgroundColor: isPast
               ? 'var(--color-past)' // Past stays muted
               : isToday
@@ -49,7 +55,7 @@ export default function Day({
           }}
           transition={{
             duration: 7,
-            delay: 2 + index * 0.02, // Gradual reveal animation
+            delay: index * 0.02, // Gradual reveal animation
             ease: 'easeOut',
             backgroundColor: {
               duration: 2, // Smooth color change for future days

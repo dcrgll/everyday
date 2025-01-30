@@ -9,7 +9,7 @@ import Day from './day'
 import Footer from './footer'
 
 export default function YearDotGrid() {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
+  const [currentYear] = useState(new Date().getFullYear())
 
   const { daysLeft, days, gridColumns } = useMemo(() => {
     const today = new Date()
@@ -31,9 +31,6 @@ export default function YearDotGrid() {
   return (
     <TooltipProvider>
       <div className="mx-auto flex max-w-sm flex-col items-center justify-center p-8">
-        {/* Year Navigation */}
-
-        {/* Yearly Calendar Grid */}
         <div
           className="grid place-items-center gap-2"
           style={{
@@ -48,15 +45,12 @@ export default function YearDotGrid() {
               isPast={isPast}
               index={index}
               isToday={isToday}
+              year={currentYear}
             />
           ))}
         </div>
 
-        <Footer
-          daysLeft={daysLeft}
-          currentYear={currentYear}
-          setCurrentYear={setCurrentYear}
-        />
+        <Footer daysLeft={daysLeft} />
       </div>
     </TooltipProvider>
   )
