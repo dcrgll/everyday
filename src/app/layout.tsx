@@ -7,7 +7,7 @@ import { ThemeProvider } from 'next-themes'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://everyday.cargill.dev'),
-  title: 'Every day | Dan Cargill',
+  title: 'Everyday | Dan Cargill',
   description: 'Track how many days you have left in the year',
   twitter: {
     card: 'summary_large_image'
