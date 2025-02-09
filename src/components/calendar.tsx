@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
-import { getDaysInYear, isBefore } from 'date-fns'
+import { getDayOfYear, getDaysInYear, isBefore } from 'date-fns'
 
 import { TooltipProvider } from '@/components/tooltip'
 
@@ -15,7 +15,9 @@ export default function YearDotGrid() {
     const today = new Date()
 
     const totalDays = getDaysInYear(new Date(currentYear, 0, 1))
-    const daysLeft = totalDays - today.getDate()
+    const daysPassed = getDayOfYear(today) // Correctly get the day of the year
+    const daysLeft = totalDays - daysPassed // Fix the calculation
+
     const gridColumns = Math.ceil(Math.sqrt(totalDays))
 
     const days = Array.from({ length: totalDays }, (_, index) => {

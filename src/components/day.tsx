@@ -39,26 +39,26 @@ export default function Day({
             opacity: 0,
             scale: 0.9,
             backgroundColor: isPast
-              ? 'var(--color-past)' // Past stays muted
+              ? 'var(--color-past)'
               : isToday
-                ? 'var(--color-present)' // Today stays primary color
-                : 'var(--color-future)' // Start with dark for future days
+                ? 'var(--color-present)'
+                : 'var(--color-future)'
           }}
           animate={{
             opacity: 1,
             scale: 1,
             backgroundColor: isToday
-              ? 'var(--color-present)' // Today stays primary color
+              ? 'var(--color-present)'
               : isPast
-                ? 'var(--color-past)' // Past stays muted
-                : 'var(--color-future)' // Future days gradually lighten
+                ? 'var(--color-past)'
+                : 'var(--color-future)'
           }}
           transition={{
             duration: 7,
-            delay: index * 0.02, // Gradual reveal animation
+            delay: index * 0.02,
             ease: 'easeOut',
             backgroundColor: {
-              duration: 2, // Smooth color change for future days
+              duration: 2,
               ease: 'easeInOut'
             }
           }}
