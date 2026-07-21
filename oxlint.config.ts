@@ -4,8 +4,8 @@ import next from 'ultracite/oxlint/next'
 import react from 'ultracite/oxlint/react'
 
 export default defineConfig({
-  extends: [core, react, next],
-  rules: {
-    'func-style': ['error', 'declaration']
-  }
+	extends: [core, react, next],
+	rules: {
+		'func-style': ['error', 'declaration']
+	}
 })
