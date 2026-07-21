@@ -1,58 +1,62 @@
 'use client'
 
-import React, { useMemo, useState } from 'react'
 import { getDayOfYear, getDaysInYear, isBefore } from 'date-fns'
+import { useMemo } from 'react'
 
 import { TooltipProvider } from '@/components/tooltip'
 
 import Day from './day'
-import DaysLeft from './days_left'
+import DaysLeft from './days-left'
 
 export default function YearDotGrid() {
-  const [currentYear] = useState(new Date().getFullYear())
+	const currentYear = new Date().getFullYear()
 
-  const { daysLeft, days, gridColumns } = useMemo(() => {
-    const today = new Date()
+	const { daysLeft, days, gridColumns } = useMemo(() => {
+		const today = new Date()
 
-    const totalDays = getDaysInYear(new Date(currentYear, 0, 1))
-    const daysPassed = getDayOfYear(today) // Correctly get the day of the year
-    const daysLeft = totalDays - daysPassed // Fix the calculation
+		const totalDays = getDaysInYear(new Date(currentYear, 0, 1))
+		const daysPassed = getDayOfYear(today)
+		const remainingDays = totalDays - daysPassed
 
-    const gridColumns = Math.ceil(Math.sqrt(totalDays))
+		const columnCount = Math.ceil(Math.sqrt(totalDays))
 
-    const days = Array.from({ length: totalDays }, (_, index) => {
-      const currentDate = new Date(currentYear, 0, index + 1)
-      const isPast = isBefore(currentDate, today)
-      const isToday = currentDate.toDateString() === today.toDateString()
-      return { date: currentDate, isPast, isToday }
-    })
+		const calendarDays = Array.from({ length: totalDays }, (_, index) => {
+			const currentDate = new Date(currentYear, 0, index + 1)
+			const isPast = isBefore(currentDate, today)
+			const isToday = currentDate.toDateString() === today.toDateString()
+			return { date: currentDate, isPast, isToday }
+		})
 
-    return { totalDays, daysLeft, days, gridColumns }
-  }, [currentYear])
+		return {
+			days: calendarDays,
+			daysLeft: remainingDays,
+			gridColumns: columnCount
+		}
+	}, [currentYear])
 
-  return (
-    <TooltipProvider>
-      <div className="mx-auto flex max-w-sm flex-col items-center justify-center p-8">
-        <div
-          className="grid place-items-center gap-2"
-          style={{
-            gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))`,
-            aspectRatio: '1 / 1'
-          }}
-        >
-          {days.map(({ date, isPast, isToday }, index) => (
-            <Day
-              key={index}
-              date={date}
-              isPast={isPast}
-              index={index}
-              isToday={isToday}
-              year={currentYear}
-            />
-          ))}
-        </div>
-        <DaysLeft daysLeft={daysLeft} />
-      </div>
-    </TooltipProvider>
-  )
+	return (
+		<TooltipProvider>
+			<div className='mx-auto flex max-w-sm flex-col items-center justify-center p-8'>
+				<div
+					className='grid place-items-center gap-2'
+					style={{
+						aspectRatio: '1 / 1',
+						gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))`
+					}}
+				>
+					{days.map(({ date, isPast, isToday }, index) => (
+						<Day
+							key={index}
+							date={date}
+							isPast={isPast}
+							index={index}
+							isToday={isToday}
+							year={currentYear}
+						/>
+					))}
+				</div>
+				<DaysLeft daysLeft={daysLeft} />
+			</div>
+		</TooltipProvider>
+	)
 }
