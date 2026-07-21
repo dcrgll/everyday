@@ -7,11 +7,13 @@
 		"build": "next build",
 		"commit": "cz",
 		"commitlint": "commitlint --edit",
-		"dev": "next dev --turbopack",
+		"dev": "portless --lan",
+		"dev:app": "next dev --turbopack",
 		"format": "ultracite fix",
 		"lint": "ultracite fix",
 		"lint:check": "ultracite check",
 		"outdated": "pnpm dlx npm-check-updates --root --format group -i",
+		"proxy": "portless proxy start --lan",
 		"prepare": "lefthook install",
 		"start": "next start",
 		"typecheck": "tsc --noEmit"
@@ -39,6 +41,7 @@
 		"lefthook": "2.1.10",
 		"oxfmt": "0.59.0",
 		"oxlint": "1.74.0",
+		"portless": "0.15.4",
 		"postcss": "^8",
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5",
@@ -49,5 +52,9 @@
 			"path": "cz-conventional-changelog"
 		}
 	},
-	"packageManager": "pnpm@11.15.1"
+	"packageManager": "pnpm@11.15.1",
+	"portless": {
+		"name": "everyday",
+		"script": "dev:app"
+	}
 }
