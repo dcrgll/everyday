@@ -2,15 +2,18 @@
   "name": "everyday",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.15.1",
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbopack",
-    "format": "prettier --write .",
-    "lint": "next lint",
-    "outdated": "pnpx npm-check-updates --root --format group -i",
-    "start": "next start"
+    "format": "ultracite fix",
+    "lint": "ultracite fix",
+    "lint:check": "ultracite check",
+    "outdated": "pnpm dlx npm-check-updates --root --format group -i",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
-  "prettier": "@dc_/prettier-config",
   "dependencies": {
     "@radix-ui/react-tooltip": "^1.2.8",
     "clsx": "^2.1.1",
@@ -23,17 +26,15 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@dc_/prettier-config": "^1.0.3",
-    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.10",
+    "oxfmt": "0.59.0",
+    "oxlint": "1.74.0",
     "postcss": "^8",
-    "prettier": "^3.7.4",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5"
+    "typescript": "^5",
+    "ultracite": "7.9.4"
   }
 }
